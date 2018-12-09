@@ -218,6 +218,21 @@
         </dependencies>
     </dependencyManagement>
 
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>maven-public</name>
+            <url>http://localhost:8081/repository/maven-public/</url>
+            <uniqueVersion>true</uniqueVersion>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>maven-snapshots</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
     <build>
         <pluginManagement>
             <plugins>
