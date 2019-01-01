@@ -16,4 +16,9 @@ public class ImageDaoImpl extends BaseDaoSupport implements ImageDao{
     public List<String> getImages(Long userId) {
         return getSqlSession().selectList(NAMESPACE + ".getImages", MapUtil.buildMap("userId", userId));
     }
+
+    @Override
+    public List<String> getImagesPage(Long userId, int offset, Integer pageSize) {
+        return getSqlSession().selectList(NAMESPACE + ".getImagesPage", MapUtil.buildMap("userId", userId, "offset", offset, "pageSize", pageSize));
+    }
 }

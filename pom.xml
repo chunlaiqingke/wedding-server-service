@@ -44,6 +44,7 @@
         <commons-fileupload.version>1.3.1</commons-fileupload.version>
         <jedis.version>2.7.2</jedis.version>
         <freemarker.version>2.3.23</freemarker.version>
+        <oss.version>3.1.0</oss.version>
 
         <maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
         <maven_jar_plugin_version>2.3.2</maven_jar_plugin_version>
@@ -214,6 +215,12 @@
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
                 <version>${jedis.version}</version>
+            </dependency>
+            <!-- oss -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${oss.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

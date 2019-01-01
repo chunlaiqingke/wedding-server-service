@@ -17,4 +17,9 @@ public class ImageServiceImpl implements ImageService{
     public List<String> getImages(Long userId) {
         return imageDao.getImages(userId);
     }
+
+    @Override
+    public List<String> getImagesPage(Long userId, int offset, Integer pageSize) {
+        return imageDao.getImagesPage(userId, offset, pageSize);
+    }
 }

@@ -6,4 +6,8 @@
     <select id="getImages" resultType="java.lang.String">
         SELECT imageUrl from user_images where userId = #{userId}
     </select>
+
+    <select id="getImagesPage" resultType="java.lang.String">
+        SELECT imageUrl FROM user_images where userId = #{userId} limit #{offset}, #{pageSize}
+    </select>
 </mapper>
