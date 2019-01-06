@@ -1,5 +1,6 @@
 package com.handsome.images.controller;
 
+import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.UploadFileRequest;
@@ -7,6 +8,7 @@ import com.aliyun.oss.model.UploadFileResult;
 import com.handsome.common.constant.OssConstants;
 import com.handsome.common.dto.ImageResponse;
 import com.handsome.common.dto.Response;
+import com.handsome.common.utils.OssClientUtils;
 import com.handsome.images.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,4 +54,5 @@ public class ImageController {
         }
         return null;
     }
+
 }

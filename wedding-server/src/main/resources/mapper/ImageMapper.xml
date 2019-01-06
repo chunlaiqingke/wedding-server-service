@@ -10,4 +10,11 @@
     <select id="getImagesPage" resultType="java.lang.String">
         SELECT imageUrl FROM user_images where userId = #{userId} limit #{offset}, #{pageSize}
     </select>
+
+    <insert id="insert" parameterType="com.handsome.images.bean.Image">
+        INSERT INTO user_images
+        (userId, prefix, fileName, tagId)
+        VALUE
+        (#{image.userId}, #{image.prefix}, #{image.fileName}, #{image.tagId})
+    </insert>
 </mapper>
