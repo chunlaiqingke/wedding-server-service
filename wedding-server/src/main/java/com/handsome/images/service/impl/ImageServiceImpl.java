@@ -1,5 +1,6 @@
 package com.handsome.images.service.impl;
 
+import com.handsome.common.utils.OssClientUtils;
 import com.handsome.images.bean.Image;
 import com.handsome.images.dao.ImageDao;
 import com.handsome.images.service.ImageService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,13 +18,32 @@ public class ImageServiceImpl implements ImageService{
     private ImageDao imageDao;
 
     @Override
-    public List<String> getImages(Long userId) {
-        return imageDao.getImages(userId);
+    public List<String> getImageUrl(Long userId) {
+        return imageDao.getImageUrl(userId);
     }
 
     @Override
-    public List<String> getImagesPage(Long userId, int offset, Integer pageSize) {
-        return imageDao.getImagesPage(userId, offset, pageSize);
+    public List<String> getImageUrlPage(Long userId, Integer offset, Integer pageSize) {
+        List<Image> images = imageDao.getImagesPage(userId, offset, pageSize);
+        List<String> result = new ArrayList<>();
+        if(images != null && images.size() > 0) {
+            for (Image image : images) {
+                result.add(OssClientUtils.getObjectExpirUrl(image.getPrefix(), image.getFileName()));
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<String> getImageUrlPrefixPage(Long userId, String prefix, Integer offset, Integer pageSize) {
+        List<Image> images = imageDao.getImagesPageByPrefix(userId, prefix, offset, pageSize);
+        List<String> result = new ArrayList<>();
+        if(images != null && images.size() > 0) {
+            for (Image image : images) {
+                result.add(OssClientUtils.getObjectExpirUrl(image.getPrefix(), image.getFileName()));
+            }
+        }
+        return result;
     }
 
     @Override

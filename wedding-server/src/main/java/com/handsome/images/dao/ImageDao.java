@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface ImageDao {
 
-    List<String> getImages(Long userId);
+    List<String> getImageUrl(Long userId);
 
-    List<String> getImagesPage(Long userId, int offset, Integer pageSize);
+    List<String> getImageUrlPage(Long userId, int offset, Integer pageSize);
+
+    List<Image> getImagesPage(Long userId, int offset, Integer pageSize);
+
+    List<Image> getImagesPageByPrefix(Long userId, String prefix, int offset, Integer pageSize);
 
     boolean insert(Image image);
 }

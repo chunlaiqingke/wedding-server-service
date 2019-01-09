@@ -10,7 +10,7 @@ public class Image {
     private String fileName;
     private Integer tagId;
     private Date createTime;
-    private Date lastModifiedTime;
+    private Date lastModifyTime;
 
     public Image(){}
 
@@ -69,11 +69,11 @@ public class Image {
         this.createTime = createTime;
     }
 
-    public Date getLastModifiedTime() {
-        return lastModifiedTime;
+    public Date getLastModifyTime() {
+        return lastModifyTime;
     }
 
-    public void setLastModifiedTime(Date lastModifiedTime) {
-        this.lastModifiedTime = lastModifiedTime;
+    public void setLastModifyTime(Date lastModifyTime) {
+        this.lastModifyTime = lastModifyTime;
     }
 }

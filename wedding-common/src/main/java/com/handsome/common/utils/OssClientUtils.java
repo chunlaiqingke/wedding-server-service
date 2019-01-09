@@ -1,13 +1,11 @@
 package com.handsome.common.utils;
 
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.BucketInfo;
-import com.aliyun.oss.model.OSSObjectSummary;
-import com.aliyun.oss.model.ObjectListing;
-import com.aliyun.oss.model.UploadFileRequest;
+import com.aliyun.oss.model.*;
 import com.handsome.common.model.oss.OssObjectKeys;
 import org.apache.log4j.Logger;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,7 +51,7 @@ public class OssClientUtils {
         return ossClient.getBucketInfo(bucketName);
     }
 
-    public static String getObjectTempUrl(String folder, String filename){
+    public static String getObjectExpirUrl(String folder, String filename){
         if(ossClient == null) {
             ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
         }
@@ -70,7 +68,7 @@ public class OssClientUtils {
         return url;
     }
 
-    public static void uploadFile(){
+    public static void uploadFile(InputStream inputStream){
         if(ossClient == null) {
             ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
         }
@@ -83,6 +81,7 @@ public class OssClientUtils {
             ossClient.createBucket(bucketName);
         }
 
+        ossClient.putObject(bucketName, null, inputStream);
     }
 
     public static List<OssObjectKeys> getObjectKeyList(String bucketName){
@@ -121,5 +120,9 @@ public class OssClientUtils {
             }
         }
         return resultList;
+    }
+
+    public void close(){
+        ossClient.shutdown();
     }
 }

@@ -26,7 +26,7 @@ public class ImageController {
     @RequestMapping(value = "images", produces = "application/json")
     public ImageResponse getBasicImages(Long userId){
         ImageResponse response = new ImageResponse();
-        List<String> images = imageService.getImages(userId);
+        List<String> images = imageService.getImageUrl(userId);
         response.setImages(images);
         response.setResultCode(200);
         return response;
@@ -37,7 +37,18 @@ public class ImageController {
         ImageResponse response = new ImageResponse();
         page = page == null ? 0 : page;
         pageSize = pageSize == null ? 10 : pageSize;
-        List<String> images = imageService.getImagesPage(userId, page * pageSize, pageSize);
+        List<String> images = imageService.getImageUrlPage(userId, page * pageSize, pageSize);
+        response.setImages(images);
+        response.setResultCode(200);
+        return response;
+    }
+
+    @RequestMapping(value = "images/folder/page", produces = "application/json")
+    public ImageResponse getImagesByFolderPage(Long userId, String prefix, Integer page, Integer pageSize){
+        ImageResponse response = new ImageResponse();
+        page = page == null ? 0 : page;
+        pageSize = pageSize == null ? 10 : pageSize;
+        List<String> images = imageService.getImageUrlPrefixPage(userId, prefix, page * pageSize, pageSize);
         response.setImages(images);
         response.setResultCode(200);
         return response;
