@@ -46,6 +46,7 @@
         <jedis.version>2.7.2</jedis.version>
         <freemarker.version>2.3.23</freemarker.version>
         <oss.version>3.4.0</oss.version>
+        <tumbnailator.version>0.4.8</tumbnailator.version>
 
         <maven_compiler_plugin_version>2.3.2</maven_compiler_plugin_version>
         <maven_jar_plugin_version>2.3.2</maven_jar_plugin_version>
@@ -227,6 +228,11 @@
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
                 <version>${oss.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${tumbnailator.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
