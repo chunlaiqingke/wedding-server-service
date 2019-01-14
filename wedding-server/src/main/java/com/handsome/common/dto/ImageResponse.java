@@ -6,6 +6,16 @@ public class ImageResponse extends Response {
 
     private List<String> images;
 
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public List<String> getImages() {
         return images;
     }

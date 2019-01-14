@@ -18,11 +18,6 @@ public class ImageServiceImpl implements ImageService{
     private ImageDao imageDao;
 
     @Override
-    public List<String> getImageUrl(Long userId) {
-        return imageDao.getImageUrl(userId);
-    }
-
-    @Override
     public List<String> getImageUrlPage(Long userId, Integer offset, Integer pageSize) {
         List<Image> images = imageDao.getImagesPage(userId, offset, pageSize);
         List<String> result = new ArrayList<>();
@@ -44,6 +39,15 @@ public class ImageServiceImpl implements ImageService{
             }
         }
         return result;
+    }
+
+    @Override
+    public String getImageById(Long userId, Long imageId) {
+        Image image = imageDao.getImageById(userId, imageId);
+        if(image != null) {
+            return OssClientUtils.getObjectExpirUrl(image.getPrefix(), image.getFileName());
+        }
+        return null;
     }
 
     @Override

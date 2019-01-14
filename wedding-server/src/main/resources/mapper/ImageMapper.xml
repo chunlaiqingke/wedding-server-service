@@ -13,20 +13,16 @@
         lastModifyTime
     </sql>
 
-    <select id="getImages" resultType="java.lang.String">
-        SELECT fileName from user_images where userId = #{userId}
-    </select>
-
-    <select id="getImageUrlPage" resultType="java.lang.String">
-        SELECT fileName FROM user_images where userId = #{userId} ORDER BY id limit #{offset}, #{pageSize}
-    </select>
-
     <select id="getImagesPage" resultType="com.handsome.images.bean.Image">
         SELECT <include refid="allColumns"/> FROM user_images where userId = #{userId} ORDER BY id limit #{offset}, #{pageSize}
     </select>
 
     <select id="getImagesPageByPrefix" resultType="com.handsome.images.bean.Image">
         SELECT <include refid="allColumns"/> FROM user_images where userId = #{userId} AND prefix = #{prefix} ORDER BY id limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="getImagesPageByPrefix" resultType="com.handsome.images.bean.Image">
+        SELECT <include refid="allColumns"/> FROM user_images where  imageId = #{imageId}
     </select>
 
     <insert id="insert" parameterType="com.handsome.images.bean.Image">

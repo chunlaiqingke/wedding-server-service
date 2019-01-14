@@ -68,7 +68,7 @@ public class OssClientUtils {
         return url;
     }
 
-    public static void uploadFile(InputStream inputStream){
+    public static void uploadFile(String fileName, InputStream inputStream){
         if(ossClient == null) {
             ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
         }
@@ -81,7 +81,7 @@ public class OssClientUtils {
             ossClient.createBucket(bucketName);
         }
 
-        ossClient.putObject(bucketName, null, inputStream);
+        ossClient.putObject(bucketName, fileName, inputStream);
     }
 
     public static List<OssObjectKeys> getObjectKeyList(String bucketName){
@@ -122,7 +122,7 @@ public class OssClientUtils {
         return resultList;
     }
 
-    public void close(){
+    public static void close(){
         ossClient.shutdown();
     }
 }

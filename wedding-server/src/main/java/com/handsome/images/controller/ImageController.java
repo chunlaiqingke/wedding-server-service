@@ -15,21 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequestMapping("images")
 public class ImageController {
 
     @Autowired
     private ImageService imageService;
 
-    @RequestMapping(value = "images", produces = "application/json")
-    public ImageResponse getBasicImages(Long userId){
-        ImageResponse response = new ImageResponse();
-        List<String> images = imageService.getImageUrl(userId);
-        response.setImages(images);
-        response.setResultCode(200);
-        return response;
-    }
-
-    @RequestMapping(value = "images/page", produces = "application/json")
+    @RequestMapping(value = "page", produces = "application/json")
     public ImageResponse getImagesPage(Long userId, Integer page, Integer pageSize){
         ImageResponse response = new ImageResponse();
         page = page == null ? 0 : page;
@@ -40,7 +32,7 @@ public class ImageController {
         return response;
     }
 
-    @RequestMapping(value = "images/folder/page", produces = "application/json")
+    @RequestMapping(value = "folder/page", produces = "application/json")
     public ImageResponse getImagesByFolderPage(Long userId, String prefix, Integer page, Integer pageSize){
         ImageResponse response = new ImageResponse();
         page = page == null ? 0 : page;
@@ -51,7 +43,17 @@ public class ImageController {
         return response;
     }
 
-    @RequestMapping(value = "images/upload", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "id")
+    public ImageResponse getImagesById(Long userId, Long imageId){
+        ImageResponse response = new ImageResponse();
+        String image = imageService.getImageById(userId, imageId);
+        response.setImage(image);
+        response.setResultCode(200);
+        return response;
+    }
+
+
+    @RequestMapping(value = "upload", method = RequestMethod.POST, produces = "application/json")
     public Response uploadImages(){
         OSSClient ossClient = new OSSClient(OssConstants.endPoint, OssConstants.accessKeyId, OssConstants.secretAccessKey);
         try {
