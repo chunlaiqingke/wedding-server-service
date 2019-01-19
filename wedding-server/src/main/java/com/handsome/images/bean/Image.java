@@ -8,17 +8,37 @@ public class Image {
     private Integer userId;
     private String prefix;
     private String fileName;
+    private String thumbnailPrefix;
+    private String thumbnail;
     private Integer tagId;
     private Date createTime;
     private Date lastModifyTime;
 
     public Image(){}
 
-    public Image(Integer userId, String prefix, String fileName, Integer tagId){
+    public Image(Integer userId, String prefix, String fileName, String thumbnailPrefix, String thumbnail, Integer tagId){
         this.userId = userId;
         this.prefix = prefix;
         this.fileName = fileName;
+        this.thumbnailPrefix = thumbnailPrefix;
+        this.thumbnail = thumbnail;
         this.tagId = tagId;
+    }
+
+    public String getThumbnailPrefix() {
+        return thumbnailPrefix;
+    }
+
+    public void setThumbnailPrefix(String thumbnailPrefix) {
+        this.thumbnailPrefix = thumbnailPrefix;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public Integer getId() {

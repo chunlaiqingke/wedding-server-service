@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface ImageDao {
 
-    List<String> getImageUrlPage(Long userId, int offset, Integer pageSize);
-
     List<Image> getImagesPage(Long userId, int offset, Integer pageSize);
 
     List<Image> getImagesPageByPrefix(Long userId, String prefix, int offset, Integer pageSize);

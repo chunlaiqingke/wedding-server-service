@@ -14,11 +14,6 @@ public class ImageDaoImpl extends BaseDaoSupport implements ImageDao{
     private static final String NAMESPACE = "com.handsome.images.bean.Image";
 
     @Override
-    public List<String> getImageUrlPage(Long userId, int offset, Integer pageSize) {
-        return getSqlSession().selectList(NAMESPACE + ".getImageUrlPage", MapUtil.buildMap("userId", userId, "offset", offset, "pageSize", pageSize));
-    }
-
-    @Override
     public List<Image> getImagesPage(Long userId, int offset, Integer pageSize) {
         return getSqlSession().selectList(NAMESPACE + ".getImagesPage", MapUtil.buildMap("userId", userId, "offset", offset, "pageSize", pageSize));
     }

@@ -35,7 +35,7 @@ public class ImageServiceImpl implements ImageService{
         List<String> result = new ArrayList<>();
         if(images != null && images.size() > 0) {
             for (Image image : images) {
-                result.add(OssClientUtils.getObjectExpirUrl(image.getPrefix(), image.getFileName()));
+                result.add(OssClientUtils.getObjectExpirUrl(image.getThumbnailPrefix(), image.getThumbnail()));
             }
         }
         return result;

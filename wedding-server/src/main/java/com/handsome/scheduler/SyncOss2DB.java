@@ -26,7 +26,7 @@ public class SyncOss2DB {
                 if(key.getKey() == null){
                     continue;
                 }
-                boolean insert = imageService.insert(new Image(1, key.getPrefix(), key.getKey(), null));
+				boolean insert = imageService.insert(new Image(1, key.getPrefix(), key.getKey(), null, null, null));
                 sum = sum + (insert ? 1 : 0);
             }
             System.out.println(sum);

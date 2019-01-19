@@ -44,8 +44,8 @@ public class ImageUtilTest {
 
     @Test
     public void test2(){
-        File srcfile = new File("D:\\Users\\Administrator\\Downloads\\张支勉精修\\jpg");
-        File tofile = new File("D:\\Users\\Administrator\\Downloads\\张支勉精修\\jpg\\cut");
+        File srcfile = new File("D:\\Users\\Administrator\\Downloads\\张支勉底片1");
+        File tofile = new File("D:\\Users\\Administrator\\Downloads\\张支勉精修\\jpg\\cut1");
         ImageUtils.convertImages(srcfile, tofile);
     }
 
