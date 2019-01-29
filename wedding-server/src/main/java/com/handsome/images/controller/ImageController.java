@@ -33,11 +33,11 @@ public class ImageController {
     }
 
     @RequestMapping(value = "folder/page", produces = "application/json")
-    public ImageResponse getImagesByFolderPage(Long userId, String prefix, Integer page, Integer pageSize){
+    public ImageResponse getImagesByFolderPage(Long userId, String prefix, Long tagId, Integer page, Integer pageSize){
         ImageResponse response = new ImageResponse();
         page = page == null ? 0 : page;
         pageSize = pageSize == null ? 10 : pageSize;
-        List<String> images = imageService.getImageUrlPrefixPage(userId, prefix, page * pageSize, pageSize);
+        List<String> images = imageService.getImageUrlPrefixPage(userId, prefix, tagId, page * pageSize, pageSize);
         response.setImages(images);
         response.setResultCode(200);
         return response;

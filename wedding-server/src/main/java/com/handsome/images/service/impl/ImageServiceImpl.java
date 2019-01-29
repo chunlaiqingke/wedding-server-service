@@ -30,8 +30,8 @@ public class ImageServiceImpl implements ImageService{
     }
 
     @Override
-    public List<String> getImageUrlPrefixPage(Long userId, String prefix, Integer offset, Integer pageSize) {
-        List<Image> images = imageDao.getImagesPageByPrefix(userId, prefix, offset, pageSize);
+    public List<String> getImageUrlPrefixPage(Long userId, String prefix, Long tagId, Integer offset, Integer pageSize) {
+        List<Image> images = imageDao.getImagesPageByPrefix(userId, prefix, tagId, offset, pageSize);
         List<String> result = new ArrayList<>();
         if(images != null && images.size() > 0) {
             for (Image image : images) {

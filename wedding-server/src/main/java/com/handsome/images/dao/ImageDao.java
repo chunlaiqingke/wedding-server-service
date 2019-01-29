@@ -8,7 +8,7 @@ public interface ImageDao {
 
     List<Image> getImagesPage(Long userId, int offset, Integer pageSize);
 
-    List<Image> getImagesPageByPrefix(Long userId, String prefix, int offset, Integer pageSize);
+    List<Image> getImagesPageByPrefix(Long userId, String prefix, Long tagId, int offset, Integer pageSize);
 
     boolean insert(Image image);
 

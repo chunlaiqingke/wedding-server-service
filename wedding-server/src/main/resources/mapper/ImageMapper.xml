@@ -20,7 +20,7 @@
     </select>
 
     <select id="getImagesPageByPrefix" resultType="com.handsome.images.bean.Image">
-        SELECT <include refid="allColumns"/> FROM user_images where userId = #{userId} AND thumbnail_prefix = #{prefix} ORDER BY id limit #{offset}, #{pageSize}
+        SELECT <include refid="allColumns"/> FROM user_images where userId = #{userId} AND thumbnail_prefix = #{prefix} and tagId = #{tagId} ORDER BY id desc limit #{offset}, #{pageSize}
     </select>
 
     <select id="getImageById" resultType="com.handsome.images.bean.Image">
