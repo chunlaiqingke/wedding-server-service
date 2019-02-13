@@ -29,8 +29,8 @@
 
     <insert id="insert" parameterType="com.handsome.images.bean.Image">
         INSERT INTO user_images
-        (userId, prefix, fileName, tagId)
+        (userId, prefix, fileName, thumbnail_prefix, thumbnail, tagId)
         VALUE
-        (#{image.userId}, #{image.prefix}, #{image.fileName}, #{image.tagId})
+        (#{image.userId}, #{image.prefix}, #{image.fileName}, #{image.thumbnailPrefix}, #{image.thumbnail}, #{image.tagId})
     </insert>
 </mapper>

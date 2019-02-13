@@ -2,9 +2,12 @@ package sheduler;
 
 import com.handsome.common.utils.ImageUtils;
 import com.handsome.common.utils.OssClientUtils;
+import com.handsome.scheduler.UploadImageScheduler;
 import net.coobird.thumbnailator.Thumbnails;
+import org.aspectj.lang.annotation.Around;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -19,6 +22,9 @@ import java.io.IOException;
 @ContextConfiguration(locations={"classpath:spring-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ImageUtilTest {
+
+    @Autowired
+    private UploadImageScheduler scheduler;
 
     @Test
     public void test(){
@@ -47,6 +53,11 @@ public class ImageUtilTest {
         File srcfile = new File("D:\\Users\\Administrator\\Downloads\\张支勉底片1");
         File tofile = new File("D:\\Users\\Administrator\\Downloads\\张支勉精修\\jpg\\cut1");
         ImageUtils.convertImages(srcfile, tofile);
+    }
+
+    @Test
+    public void test3(){
+        scheduler.uploadImageScheduler();
     }
 
 }
